@@ -1,0 +1,9 @@
+
+1- Launch timer.       Player has to time the launch by pressing 'space' exactly at T0
+2- staging.            Player has to initiate staging by pressing space when fuel runs out
+3- orbital insertion.  Player has to shutdown engine at the correct time for a circular orbit
+4- transfer timer.     Player has to start and stop lunar transfer burn at the correct time
+5- reconfig.           Player has to reconfigure the spacecraft by undocking and rotating the CM
+6- lunar injection     Player has to start and stop burn to achieve circular lunar orbit
+7- landing.            Player has to control the LEM landing with limited fuel
+ 
