@@ -62,7 +62,7 @@ def play():
         
         if posy == data.ymax-40:
             landed = True
-            score=(100-vely)*50
+            score=max((100-vely)*50,0)
             pg.time.wait(2000)
         
     

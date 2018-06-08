@@ -11,7 +11,7 @@ Moon =  (165 , 108,  21)
 
 Colors = [White,Green,Red]
 
-mainfont = pg.font.Font('files\ARCADECLASSIC.ttf', 60)
+mainfont = pg.font.Font('files\ARCADECLASSIC.ttf', 30)
 
 xmax=900
 ymax=720

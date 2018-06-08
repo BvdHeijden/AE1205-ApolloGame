@@ -10,12 +10,13 @@ import landing
   
 pg.init()
 
-##DISPLAY START SCREEN
-#Continue = Startscreen.display()
-#
-##Display introduction
-#Continue = transitions.intro()
+#DISPLAY START SCREEN
+Startscreen.display()
 
+#Display introduction
+transitions.intro()
+
+#Play Landing game
 score = landing.play()
 
 pg.quit()

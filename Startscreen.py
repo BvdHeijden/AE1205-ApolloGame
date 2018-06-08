@@ -8,33 +8,31 @@ pg.init()
 def display():
     paused = True
     start = False
-    fr = 500
     txtDisplay = True
     
     while paused:
         pg.event.pump()
         key=pg.key.get_pressed()
         
-        pg.time.wait(fr)
+        data.scr.fill(data.Black)
         
-        if key[pg.K_RETURN]:
-            start = True
-            paused=False
-        if key[pg.K_ESCAPE]:
-            start = False
-            paused = False
-        
-        data.scr.fill((0,0,0))
+        text=data.mainfont.render('Barts  ultra-realistic   Apollo  Simulator',False,data.White)
+        data.scr.blit(text,((data.xmax-text.get_width())/2,200))
         
         if txtDisplay:
-            text=data.mainfont.render('PRESS   ENTER   TO   START',False,(rnd.randint(10,255),rnd.randint(10,255),rnd.randint(10,255)))
+            text=data.mainfont.render('Press  ENTER   to   start',False,data.Red)
             data.scr.blit(text,((data.xmax-text.get_width())/2,data.ymax/2))
-            fr=600
             txtDisplay = False
         else:
-            fr=300
             txtDisplay = True
-                
+        
         pg.display.flip()
-    
+        
+        pg.time.wait(300)
+        
+        if key[pg.K_RETURN]:
+            start=True
+            paused = False
+        
     return start
+            
