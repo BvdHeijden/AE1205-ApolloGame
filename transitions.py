@@ -7,8 +7,8 @@ pg.init()
 def intro():
     data.scr.fill(data.Black)
     
-    bob.center=(data.xmax/3,data.ymax-450)
-    data.scr.blit(bobi,bob)
+    data.bob.center=(data.xmax/3,data.ymax-450)
+    data.scr.blit(data.bobi,data.bob)
     
     pg.display.flip()
     
