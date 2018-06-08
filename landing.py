@@ -29,10 +29,17 @@ def play():
         data.scr.fill(data.Black)
         pg.draw.rect(data.scr,data.Moon,(0,data.ymax-40,data.xmax,40))
         
+        rocks=rnd.sample(data.rocks, rnd.randint(1,4))
+        for rock in rocks:
+            rock[1].center=rnd.randint(1,data.xmax),data.ymax-56
+            data.scr.blit(rock[0],rock[1])
+        
         data.lem.center=posx,posy-(data.lem.height/2)
         data.scr.blit(data.lemi,data.lem)
         text=data.mainfont.render(str(round(fuel*100)),False,data.Red)
         data.scr.blit(text,(5,100))
+        
+        
         pg.display.flip()
         
         accx=0

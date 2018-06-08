@@ -37,3 +37,16 @@ lemi=pg.image.load('files\\lem.png')
 lemi=pg.transform.scale(lemi,(169,128))
 lem=lemi.get_rect()
 
+rock1i=pg.image.load('files\\rock_1.png')
+rock1=rock1i.get_rect()
+
+rock2i=pg.image.load('files\\rock_2.png')
+rock2=rock2i.get_rect()
+
+rock3i=pg.image.load('files\\rock_3.png')
+rock3=rock3i.get_rect()
+
+rock4i=pg.image.load('files\\rock_4.png')
+rock4=rock4i.get_rect()
+
+rocks=[[rock1i,rock1],[rock2i,rock2],[rock3i,rock3],[rock4i,rock4]]

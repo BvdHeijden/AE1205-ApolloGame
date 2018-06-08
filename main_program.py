@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import pygame as pg
-import random as rnd
 import data
 import transitions
 import Startscreen
