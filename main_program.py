@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
 
 import pygame as pg
+import random as rnd
+import data
+import transitions
+import Startscreen
 
+  
 pg.init()
 
-#Set screen resolution
-xmax=1920
-ymax=980
-reso=(xmax,ymax)
-scr=pg.display.set_mode(reso)
+#DISPLAY START SCREEN
+Continue = Startscreen.display()
+
+#Display introduction
+Continue = transitions.intro()
+
+
+pg.quit()
