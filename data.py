@@ -21,6 +21,9 @@ scr=pg.display.set_mode(reso)
 xsens=50
 ysens=250
 fGrav=100
+
+mu=10
+
     
 bobi=pg.image.load('files\\bob.png')
 bobi=pg.transform.scale(bobi,(385,600))
@@ -31,6 +34,7 @@ saturni=pg.transform.scale(saturni,(225,170))
 saturn=saturni.get_rect()
 
 csmi=pg.image.load('files\\csmcmlem.png')
+csmi=pg.transform.scale(csmi,(30,30))
 csm=csmi.get_rect()
 
 lemi=pg.image.load('files\\lem.png')
@@ -40,6 +44,10 @@ lem=lemi.get_rect()
 sfci=pg.image.load('files\moon-surface.png')
 sfci=pg.transform.scale(sfci,(xmax,ymax))
 sfc=sfci.get_rect()
+
+sfc2i=pg.image.load('files\moon-surface-2.png')
+sfc2i=pg.transform.scale(sfc2i,(xmax,ymax))
+sfc2=sfc2i.get_rect()
 
 earthi=pg.image.load('files\earth.png')
 earthi=pg.transform.scale(earthi,(70,70))

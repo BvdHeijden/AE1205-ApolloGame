@@ -28,14 +28,18 @@ def play():
         t0=t
         
         data.scr.fill(data.Black)
-        data.scr.blit(data.sfci,data.sfc)        
+#        data.scr.blit(data.sfci,data.sfc)        
         
         data.lem.center=posx,posy-(data.lem.height/2)
         data.scr.blit(data.lemi,data.lem)
         text=data.mainfont.render(str(round(fuel*100)),False,data.Red)
         data.scr.blit(text,(5,100))
         
-        
+        sh=pg.Surface((85,5))
+        sh.set_alpha(200)
+        sh.fill(data.Black)
+        data.scr.blit(sh,(posx-43,data.ymax-40))
+                
         pg.display.flip()
         
         accx=0

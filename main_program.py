@@ -11,14 +11,15 @@ import landing
 pg.init()
 
 score=0
-##DISPLAY START SCREEN
+
+##Display Start screen
 #Startscreen.display()
 #
 ##Display introduction
 #transitions.intro()
-
-#Play lunar transfer game
-score += lunartransfer.play()
+#
+##Play lunar transfer game
+#score += lunartransfer.play()
 
 #Play Landing game
 score += landing.play()
