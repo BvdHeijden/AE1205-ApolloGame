@@ -13,7 +13,7 @@ Colors = [White,Green,Red]
 
 mainfont = pg.font.Font('files\ARCADECLASSIC.ttf', 30)
 
-xmax=900
+xmax=1080
 ymax=720
 reso=(xmax,ymax)
 scr=pg.display.set_mode(reso)
@@ -34,8 +34,20 @@ csmi=pg.image.load('files\\csmcmlem.png')
 csm=csmi.get_rect()
 
 lemi=pg.image.load('files\\lem.png')
-lemi=pg.transform.scale(lemi,(169,128))
+lemi=pg.transform.scale(lemi,(85,64))
 lem=lemi.get_rect()
+
+sfci=pg.image.load('files\moon-surface.png')
+sfci=pg.transform.scale(sfci,(xmax,ymax))
+sfc=sfci.get_rect()
+
+earthi=pg.image.load('files\earth.png')
+earthi=pg.transform.scale(earthi,(70,70))
+earth=earthi.get_rect()
+
+mooni=pg.image.load('files\moon.png')
+mooni=pg.transform.scale(mooni,(40,40))
+moon=mooni.get_rect()
 
 rock1i=pg.image.load('files\\rock_1.png')
 rock1=rock1i.get_rect()

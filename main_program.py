@@ -4,18 +4,23 @@ import pygame as pg
 import data
 import transitions
 import Startscreen
+import lunartransfer
 import landing
 
   
 pg.init()
 
-#DISPLAY START SCREEN
-Startscreen.display()
+score=0
+##DISPLAY START SCREEN
+#Startscreen.display()
+#
+##Display introduction
+#transitions.intro()
 
-#Display introduction
-transitions.intro()
+#Play lunar transfer game
+score += lunartransfer.play()
 
 #Play Landing game
-score = landing.play()
+score += landing.play()
 
 pg.quit()

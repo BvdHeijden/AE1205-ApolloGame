@@ -15,6 +15,7 @@ def play():
     vely=20
     fuel=1.
     
+    
     t0=float(pg.time.get_ticks())/1000
 
     while not landed:
@@ -27,12 +28,7 @@ def play():
         t0=t
         
         data.scr.fill(data.Black)
-        pg.draw.rect(data.scr,data.Moon,(0,data.ymax-40,data.xmax,40))
-        
-        rocks=rnd.sample(data.rocks, rnd.randint(1,4))
-        for rock in rocks:
-            rock[1].center=rnd.randint(1,data.xmax),data.ymax-56
-            data.scr.blit(rock[0],rock[1])
+        data.scr.blit(data.sfci,data.sfc)        
         
         data.lem.center=posx,posy-(data.lem.height/2)
         data.scr.blit(data.lemi,data.lem)
