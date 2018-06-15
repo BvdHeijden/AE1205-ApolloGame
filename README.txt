@@ -1,0 +1,1 @@
+to play the game, run "main_program.py"

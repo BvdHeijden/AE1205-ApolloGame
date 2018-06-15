@@ -99,6 +99,5 @@ def play():
                 
                 if key[pg.K_RETURN]:
                     paused = False     
-        
-    
+            
     return score

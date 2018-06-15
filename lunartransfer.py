@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import pygame as pg
-from numpy import sin,cos,sqrt,arctan,arccos,degrees
+from numpy import sin,cos,sqrt,arccos,degrees
 import data
 
 pg.init()

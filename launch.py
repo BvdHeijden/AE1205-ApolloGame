@@ -114,7 +114,3 @@ def play():
             running = False
         
     return score
-        
-        
-        
-        

@@ -25,7 +25,6 @@ ysens=250
 fGrav=100
 
 mu=10
-
     
 bobi=pg.image.load('files\\bob.png')
 bobi=pg.transform.scale(bobi,(385,600))
@@ -66,4 +65,3 @@ earth=earthi.get_rect()
 mooni=pg.image.load('files\moon.png')
 mooni=pg.transform.scale(mooni,(40,40))
 moon=mooni.get_rect()
-

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import pygame as pg
-import random as rnd
 import data
 
 pg.init()
@@ -34,5 +33,4 @@ def display():
             start=True
             paused = False
         
-    return start
-            
+    return start         
