@@ -8,9 +8,8 @@ def play():
     
     data.scr.fill(data.Black)
     
-    h=0
     data.landscape.bottomleft=(0,data.ymax)
-    data.saturn.bottomleft=(data.xmax/2-10,data.ymax-20)
+    data.saturn.topleft=(data.xmax/2-10,data.ymax-30*6.1-20)
     
     #Explanation
     data.scr.blit(data.landscapei,data.landscape)
@@ -76,8 +75,30 @@ def play():
         
         if key[pg.K_SPACE]:
             counting = False
-            
-    return 5000
+            score = max(0,5000-abs(5000*T/0.15))
+    
+    #Launch sequence
+    running = True
+    h=0
+    t0=float(pg.time.get_ticks())/1000
+    while running:
+        pg.event.pump()
+        key = pg.key.get_pressed()
+        
+        t=float(pg.time.get_ticks())/1000-t0
+        
+        data.saturn_fire.topleft = (data.xmax/2-10,max(data.ymax/4,-(2*t)**2+data.ymax-30*6.1-20))
+        data.landscape.bottomleft = (0,data.ymax + max(0, (t - 5)*200))
+        data.scr.fill(data.Black)
+        data.scr.blit(data.landscapei,data.landscape)
+        data.scr.blit(data.saturn_firei,data.saturn_fire)
+        
+        pg.display.flip()
+        
+        if key[pg.K_ESCAPE]:
+            running = False
+        
+    return score
         
         
         
