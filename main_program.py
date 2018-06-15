@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import pygame as pg
-import data
 import transitions
 import Startscreen
 import launch
@@ -11,21 +10,33 @@ import landing
   
 pg.init()
 
-score=0
+again = True
 
-##Display Start screen
-#Startscreen.display()
+#Display Start screen
+Startscreen.display()
 
-##Display introduction
-#transitions.intro()
-
-#Play launch game
-score += launch.play()
-
-##Play lunar transfer game
-#score += lunartransfer.play()
-
-##Play Landing game
-#score += landing.play()
+while again:
+    score=0
+    
+    #Display introduction
+    transitions.intro()
+    
+    #Play launch game
+    score += launch.play()
+    
+    #Display lunar transfer explanation
+    transitions.lunar()           
+    
+    #Play lunar transfer game
+    score += lunartransfer.play()
+    
+    #Display landing explanation
+    transitions.landing()
+    
+    #Play Landing game
+    score += landing.play()
+    
+    #Display final score and end scene
+    again = transitions.ending(score)
 
 pg.quit()   

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import pygame as pg
-from numpy import sin,cos,sqrt,arctan,degrees
+from numpy import sin,cos,sqrt,arctan,arccos,degrees
 import data
 
 pg.init()
@@ -30,12 +30,12 @@ def play():
         
         data.scr.fill(data.Black)
         
-        xmoon=a_moon*cos(-0.015*T)+data.xmax/2
-        ymoon=a_moon*sin(-0.015*T)+data.ymax/2        
+        xmoon=a_moon*cos(-0.15*T)+data.xmax/2
+        ymoon=a_moon*sin(-0.15*T)+data.ymax/2        
         data.moon.center=(xmoon,ymoon)
         
-        xship=a_parking*cos(-T)+data.xmax/2
-        yship=a_parking*sin(-T)+data.ymax/2        
+        xship=a_parking*cos(-10*T)+data.xmax/2
+        yship=a_parking*sin(-10*T)+data.ymax/2        
         data.csm.center=(xship,yship)
 
         
@@ -49,8 +49,15 @@ def play():
         
         if key[pg.K_SPACE]:
             running = False
-            phi=degrees(arctan((-yship+data.ymax/2)/(xship-data.xmax/2)))
-            print('phi = ',phi)
+            if yship < (data.ymax/2):
+                phi=degrees(arccos((xship-data.xmax/2)/a_parking))
+            else:
+                phi=- degrees(arccos((xship-data.xmax/2)/a_parking))
+                
+            if ymoon < (data.ymax/2):
+                phi_moon=degrees(arccos((xmoon-data.xmax/2)/a_moon))
+            else:
+                phi_moon=- degrees(arccos((xmoon-data.xmax/2)/a_moon))
         
         if key[pg.K_ESCAPE]:
             return 0
@@ -73,19 +80,15 @@ def play():
         key=pg.key.get_pressed()
         T=(float(pg.time.get_ticks())/1000)-Tb
         
-        ra=rp+10*T
+        ra=rp+30*T
         e=(ra-rp)/(ra+rp)
         a=(rp+ra)/2
         orb_rect = pg.Rect(0,0,rp+ra,2*sqrt(ra*rp))
         orb_rect.center = (data.xmax/2)-(e*a) , data.ymax/2
-        sur = pg.Surface((data.xmax,data.ymax))
-        sur.fill(data.Red)
-        pg.draw.ellipse(sur,data.Blue,orb_rect,3)
-        sur = pg.transform.rotate(sur,phi)
-
         
         data.scr.fill(data.Black)
-        data.scr.blit(sur,(0,0))
+        sur = create_ellipse(rp,ra,phi)
+        data.scr.blit(sur,(data.xmax/2-sur.get_width()/2,data.ymax/2-sur.get_height()/2))
         pg.draw.circle(data.scr, data.Green, (int(data.xmax/2),int(data.ymax/2)), int(a_moon), 3)
         pg.draw.circle(data.scr, data.Red, (int(data.xmax/2),int(data.ymax/2)),int(a_parking),3)        
         data.scr.blit(data.earthi,data.earth)
@@ -97,11 +100,49 @@ def play():
         if key[pg.K_SPACE]==False:
             burning = False       
     
-    return 5000
+    phi_moon += 540
+    phi += 360
+    
+    phi_moon = phi_moon%360
+    phi = phi%360
+    
+    dphi = phi-phi_moon
+    score=-250*dphi+2500
+    
+    da=abs(a_moon-ra)
+    score += -62.5*da + 2500
+    
+    pg.time.wait(1000)    
+    text=data.mainfont_small.render('Well Done!',False,data.Red)
+    data.scr.blit(text,(data.xmax/3,100)) 
+    
+    paused = True
+    txtDisplay = False
+    
+    while paused:    
+        pg.event.pump() 
+        key=pg.key.get_pressed()
+        
+        if txtDisplay:
+            text=data.mainfont_small.render('press ENTER to continue',False,data.Red)
+            data.scr.blit(text,(data.xmax/3,120))    
+            txtDisplay=False
+        else:
+            pg.draw.rect(data.scr,data.Black,(data.xmax/3,120,250,40))
+            txtDisplay=True
+            
+        pg.display.flip()
+        
+        pg.time.wait(300)
+        
+        if key[pg.K_RETURN]:
+            paused = False     
+    
+    return max(0,score)
         
 def create_ellipse(rp,ra,phi):
-    sur = pg.Surface((rp+ra,2*sqrt(ra*rp)))
-    pg.draw.ellipse(sur,data.Blue,(data.xmax/2,data.ymax/2,rp+ra,2*sqrt(ra*rp)),3)
+    sur = pg.Surface((2*ra,2*sqrt(ra*rp)))
+    pg.draw.ellipse(sur,data.Blue,(0,0,rp+ra,2*sqrt(ra*rp)),2)
     sur = pg.transform.rotate(sur,phi)
     
     return sur

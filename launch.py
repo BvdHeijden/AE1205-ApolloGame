@@ -6,6 +6,7 @@ pg.init()
 
 def play():
     
+    time = 99.
     data.scr.fill(data.Black)
     
     data.landscape.bottomleft=(0,data.ymax)
@@ -33,7 +34,7 @@ def play():
 
     #Waiting for timer start
     paused = True
-    txtDisplay = True
+    txtDisplay = False
     while paused:
         pg.event.pump() 
         key=pg.key.get_pressed()
@@ -75,11 +76,11 @@ def play():
         
         if key[pg.K_SPACE]:
             counting = False
+            time = round(T,3)
             score = max(0,5000-abs(5000*T/0.15))
     
     #Launch sequence
     running = True
-    h=0
     t0=float(pg.time.get_ticks())/1000
     while running:
         pg.event.pump()
@@ -93,9 +94,23 @@ def play():
         data.scr.blit(data.landscapei,data.landscape)
         data.scr.blit(data.saturn_firei,data.saturn_fire)
         
+        if t>5:
+            text = 'Well Done! you timed the launch within '+str(abs(time))+' seconds!'
+            text=data.mainfont_small.render(text,False,data.Red)
+            data.scr.blit(text,(20,data.ymax*1/8))
+        
+        if t>7:
+            text=data.mainfont_small.render('Press Enter to continue to the next level, or keep watching the rocket fly to space.',False,data.Red)
+            data.scr.blit(text, (20,data.ymax*1/8+40))
+            
+        if t>9:
+            text=data.mainfont_small.render('You never know what you may encounter in space ;)',False,data.Red)
+            data.scr.blit(text, (20,data.ymax*1/8+60))
+
+        
         pg.display.flip()
         
-        if key[pg.K_ESCAPE]:
+        if key[pg.K_ESCAPE] or key[pg.K_RETURN]:
             running = False
         
     return score
